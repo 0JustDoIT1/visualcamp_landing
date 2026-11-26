@@ -254,7 +254,7 @@ src/
   - 내용: 1장 이벤트 하나를 상수로 정의. `findEvent(eventId)`, `isEventOpen(event, now)`. 시각은 `+09:00` 고정 (Vercel 서버는 UTC)
   - 완료 기준: `npm run typecheck`
 
-- [ ] **B3. 입력 스키마 [Claude]**
+- [x] **B3. 입력 스키마 [Claude]**
   - 수정 대상: `src/lib/applications/schema.ts`
   - 내용: 2장 요청 표대로. 학년·유형은 상수 배열로 export(폼 재사용). 이메일은 정규화 후 형식 검사(`" A@b.com "` 통과). 필드 오류를 `{ 필드: 첫 메시지 }`로 바꾸는 함수 포함
   - 완료 기준: `npm run typecheck`

@@ -219,7 +219,7 @@ src/
 
   확인: `npx vitest --version`, `npm run typecheck`
 
-- [ ] **A4. GitHub 저장소 [직접]**
+- [x] **A4. GitHub 저장소 [직접]**
   ```bash
   # 가드레일 파일 복사: CLAUDE.md, .claude/, .gitattributes → 루트 / GUIDE.md → docs/GUIDE.md
   # CLAUDE.md가 이미 있으면 덮어쓴다 (가드레일 CLAUDE.md가 @AGENTS.md를 불러온다)
@@ -232,7 +232,7 @@ src/
   ```
   `gh`가 없으면 GitHub 웹에서 빈 저장소를 만들고 `git remote add origin <URL>` → `git push -u origin main`.
 
-- [ ] **A5. Vercel 연결 [직접]**
+- [x] **A5. Vercel 연결 [직접]**
   1. vercel.com → Add New → Project → `visualcamp_landing` Import → Deploy
   2. 목록에 없으면 Adjust GitHub App Permissions에서 저장소 접근 허용
   3. Settings → Git → Production Branch가 `main`인지 확인
@@ -243,7 +243,7 @@ src/
 
 각 단계의 기준은 2장이다.
 
-- [ ] **B1. Vitest 설정 [Claude]**
+- [x] **B1. Vitest 설정 [Claude]**
   - 요청: `/step B1`
   - 수정 대상: `vitest.config.mts`
   - 내용: `@` 별칭 → `./src` (플러그인 없이 `resolve.alias`), 환경 `node`, 대상 `tests/**/*.test.ts`. 확장자는 `.mts` (프로젝트가 CommonJS로 취급되어 `.ts`면 ESM 경고가 난다)

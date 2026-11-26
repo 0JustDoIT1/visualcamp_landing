@@ -40,7 +40,7 @@
 | --- | --- |
 | ID | `csat-2027-gaze-report` |
 | 이름 | 2027 수능 비문학, 35일 다시 읽기 |
-| 신청 기간 | 2026-12-01 00:00 KST(포함) ~ 2027-01-05 00:00 KST(미포함) |
+| 신청 기간 | 2026-11-20 00:00 KST(포함, 수능 다음 날) ~ 2027-01-05 00:00 KST(미포함) |
 | STEP 1 · 신청 즉시 | 올해 수능 비문학 지문 우선 공개 + 응시자 평균 시선 패턴과 비교한 내 시선 리포트 (신규 제안 기능, README에 명시) |
 | STEP 2 · 35일 동안 | 2027-01-05 ~ 02-08, 다시 물 주기(3·14·35일 간격 복습)로 틀린 문항 복습, 완주 시 프리미엄 1개월 |
 
@@ -249,7 +249,7 @@ src/
   - 내용: `@` 별칭 → `./src` (플러그인 없이 `resolve.alias`), 환경 `node`, 대상 `tests/**/*.test.ts`. 확장자는 `.mts` (프로젝트가 CommonJS로 취급되어 `.ts`면 ESM 경고가 난다)
   - 완료 기준: `npx vitest run` → "No test files found" (테스트가 아직 없으므로 정상. 이때 종료 코드 1도 정상이며, B8 전까지 `npm run test` 실패는 무시한다)
 
-- [ ] **B2. 이벤트 정의 [Claude]**
+- [x] **B2. 이벤트 정의 [Claude]**
   - 수정 대상: `src/lib/events/events.ts`
   - 내용: 1장 이벤트 하나를 상수로 정의. `findEvent(eventId)`, `isEventOpen(event, now)`. 시각은 `+09:00` 고정 (Vercel 서버는 UTC)
   - 완료 기준: `npm run typecheck`
@@ -283,7 +283,7 @@ src/
       -H "Content-Type: application/json" \
       -d '{"name":"김천지","email":"a@example.com","grade":"PRE_HIGH3","agreePrivacy":true}'
     ```
-    2026-12-01 이전이면 `409 EVENT_CLOSED`, 이후면 `201`
+    신청 기간 안(2026-11-20 ~ 2027-01-04)이면 `201`, 같은 이메일로 다시 보내면 `409 ALREADY_APPLIED`
 
 - [ ] **B8. 테스트 [Claude]**
   - 수정 대상: `tests/api/applications.test.ts`, `tests/lib/rate-limit.test.ts`
@@ -381,7 +381,7 @@ src/
     - weakTypes는 칩 선택(최대 3개, 초과 시 안내), 허니팟 필드는 화면과 보조기기 모두에서 숨김
     - 신청 기간 밖이면 폼 대신 안내 (기간 판정은 서버 응답 기준, 화면에는 기간 표시)
   - 완료 기준: 각 오류 케이스를 실제로 발생시켜 표시 확인, 키보드만으로 작성·제출 가능, `npm run lint`·`typecheck`·`test`
-  - 참고: 12/1 이전에는 서버가 `EVENT_CLOSED`를 응답하므로 성공 화면은 12/1 이후에 확인한다.
+  - 참고: 신청 기간 밖 안내 화면은 실제 시각으로는 볼 수 없으므로, 서버가 `EVENT_CLOSED`를 돌려주는 경우를 개발 중에 임시로 만들어 확인한다 (확인 후 원복).
 
 ### Phase F. 마감 (12/7–8)
 
@@ -405,7 +405,7 @@ src/
 | 로컬은 되는데 Vercel·CI 빌드만 실패 | import 경로와 실제 파일명 대소문자 |
 | CI typecheck만 실패 | `typecheck` 스크립트에 `next typegen`이 있는지 |
 | 테스트에서 `@/...` 모듈을 못 찾음 | `vitest.config.mts`의 별칭이 `./src`인지 |
-| 신청하면 항상 409 | 12/1 이전이면 `EVENT_CLOSED`가 정상. 같은 이메일이면 `ALREADY_APPLIED` |
+| 신청하면 항상 409 | 같은 이메일이면 `ALREADY_APPLIED` (개발 서버를 재시작하면 인메모리 저장소가 비워짐). 2027-01-05 이후면 `EVENT_CLOSED` |
 | main에 푸시했는데 프로덕션에 안 나감 | Actions `ci` 실패 여부 (Deployment Checks가 막는 중), Production Branch 설정 |
 
 ---
@@ -417,3 +417,4 @@ src/
 - 2026-11-26 | 가이드 작성 | -
 - 2026-11-26 | create-next-app `@16`·의존성 `-E` 고정, `/step` [직접] 판정을 브랜치 확인보다 먼저, Phase E 이후 브랜치 명시, CLAUDE.md에 `@AGENTS.md` | 버전 일치, Phase A에서 `/step` 오작동 방지, 문서 빈칸 해소
 - 2026-11-26 | 브랜치 없이 `main` 하나로 작업 (PR·Preview 없음) | 사용자 결정, 1인 작업
+- 2026-11-26 | 신청 시작을 2026-12-01에서 2026-11-20 00:00 KST(수능 다음 날)로 | 수능 직후 시의성, 개발·심사 시점부터 신청 가능

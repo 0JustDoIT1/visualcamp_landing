@@ -275,7 +275,7 @@ src/
   - 내용: 2장 오류 표를 한 곳에 정의하고 응답 생성 함수(헤더 전달 가능). rate limiter는 고정 윈도우, 키별 카운트, 윈도우가 지나면 초기화, 남은 시간을 올림한 초 반환. 테스트를 위해 시계를 주입할 수 있게
   - 완료 기준: `npm run typecheck`
 
-- [ ] **B7. 핸들러 + 라우트 [Claude]**
+- [x] **B7. 핸들러 + 라우트 [Claude]**
   - 수정 대상: `src/lib/applications/handler.ts`, `container.ts`, `src/app/api/events/[eventId]/applications/route.ts`
   - 내용: 2장 처리 순서 그대로. 전체 try/catch → `INTERNAL_ERROR`. `container.ts`에서 분당 5회 rate limiter와 `globalThis` 저장소로 조립. route는 `POST`만 export
   - 완료 기준: `npm run typecheck`, 그리고 `npm run dev` 후

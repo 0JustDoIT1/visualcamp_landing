@@ -1,3 +1,4 @@
+import { Header } from "@/components/sections/Header";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -14,12 +15,7 @@ const SECTIONS = [
 export default function Home() {
   return (
     <>
-      {/* D1에서 고정 헤더로 교체 */}
-      <header className="border-b border-border">
-        <Container className="flex h-16 items-center">
-          <p className="text-caption text-muted">Header 자리 (D1)</p>
-        </Container>
-      </header>
+      <Header />
 
       <main className="flex-1">
         {/* D2에서 Hero로 교체. 버튼은 상태 확인용으로 미리 둔다 (문구는 GUIDE 1장). */}

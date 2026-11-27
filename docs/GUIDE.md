@@ -264,7 +264,7 @@ src/
   - 내용: `save(application)` → 성공 또는 `DUPLICATE`, `count(eventId)`. `Application`은 입력에서 `website`를 뺀 것 + `id`, `eventId`, `createdAt`
   - 완료 기준: `npm run typecheck`
 
-- [ ] **B5. 서비스 [Claude]**
+- [x] **B5. 서비스 [Claude]**
   - 수정 대상: `src/lib/applications/service.ts`
   - 내용: `repository`, `now`, `generateId`를 주입받아 `apply(event, input)`. 기간 → 동의 → 저장. 결과는 성공 또는 `EVENT_CLOSED` / `CONSENT_REQUIRED` / `ALREADY_APPLIED`
   - 완료 기준: `npm run typecheck`

@@ -331,13 +331,13 @@ src/
   ```
   완료 기준: 모두 통과, build 라우트 목록에 `ƒ /api/events/[eventId]/applications`
 
-- [ ] **B11. 푸시와 배포 게이트 [직접]**
+- [x] **B11. 푸시와 배포 게이트 [직접]**
   1. 커밋 → `main` 푸시 → Actions `ci` 통과, 프로덕션 배포 확인
   2. Vercel → Settings → Build and Deployment → Deployment Checks → Add Checks → `ci`
 
 ### Phase C. 디자인 기반 (12/1)
 
-- [ ] **C1. 디자인 토큰 [Claude]**
+- [x] **C1. 디자인 토큰 [Claude]**
   - 요청: `/step C1` (설계 요지에서 팔레트와 타입 스케일 후보 2개를 보여 준다)
   - 수정 대상: `src/app/globals.css`
   - 내용: 1장 디자인 원칙을 Tailwind 4 `@theme` 토큰으로. 배경·본문·보조 텍스트·경계선·포인트·이벤트 보조색, 타입 스케일(모바일/데스크톱), 간격, 반경. 이후 컴포넌트는 임의 hex 대신 토큰만 쓴다

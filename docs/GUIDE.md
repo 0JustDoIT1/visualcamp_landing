@@ -348,7 +348,7 @@ src/
   - 내용: Pretendard(본문), 지문용 명조 1종. 기본으로 들어 있는 Geist 폰트는 제거. 로딩 방식(`next/font/local` 등)을 먼저 제안
   - 완료 기준: 개발 서버에서 폰트 적용 확인, `npm run build` 통과
 
-- [ ] **C3. 레이아웃과 공통 UI [Claude]**
+- [x] **C3. 레이아웃과 공통 UI [Claude]**
   - 수정 대상: `src/app/layout.tsx`, `src/app/page.tsx`, `src/components/ui/*`
   - 내용: `lang="ko"`, 메타데이터 기본값, 기본 페이지 내용 제거. `Container`, `SectionHeading`, `Button`(primary·secondary, hover·focus-visible·disabled)
   - 완료 기준: 빈 섹션 자리만 있는 페이지, `npm run lint`

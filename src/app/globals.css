@@ -13,6 +13,7 @@
   --color-muted: #545d70; /* 보조 텍스트 */
   --color-border: #e6e1d8; /* 경계선 */
   --color-accent: #c2410c; /* 포인트: 시선 경로·CTA 전용 */
+  --color-accent-strong: #9a3412; /* 포인트 hover (흰 글자 대비 7.3) */
   --color-accent-ink: #ffffff; /* 포인트 위 글자 */
   --color-sprout: #276c45; /* 이벤트 섹션 보조색 */
   --color-sprout-bg: #eaf5ee; /* 이벤트 섹션 보조 배경 */

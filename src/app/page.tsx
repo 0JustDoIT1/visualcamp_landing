@@ -1,5 +1,5 @@
 import { Header } from "@/components/sections/Header";
-import { Button } from "@/components/ui/Button";
+import { Hero } from "@/components/sections/Hero";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
@@ -18,18 +18,7 @@ export default function Home() {
       <Header />
 
       <main className="flex-1">
-        {/* D2에서 Hero로 교체. 버튼은 상태 확인용으로 미리 둔다 (문구는 GUIDE 1장). */}
-        <section id="hero" aria-labelledby="hero-title" className="scroll-mt-16 py-section">
-          <Container>
-            <SectionHeading id="hero-title" eyebrow="Hero 자리 (D2)" title="올해 수능 비문학, 당신의 눈은 어디서 멈췄을까." />
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button href="#event">35일 다시 읽기 신청</Button>
-              <Button href="#" variant="secondary">
-                앱 살펴보기
-              </Button>
-            </div>
-          </Container>
-        </section>
+        <Hero />
 
         {SECTIONS.map(({ id, label, step }) => (
           <section

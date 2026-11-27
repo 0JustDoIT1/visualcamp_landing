@@ -38,6 +38,31 @@
   /* 간격: 기본 4px 단위(--spacing)는 Tailwind 기본값 그대로, 섹션 사이만 통일 */
   --spacing-section: clamp(4rem, 2.55rem + 6.19vw, 7.5rem); /* 64 → 120px */
 
+  /* 모션: Hero 시선 경로 1회 재생 (motion-safe에서만 쓴다) */
+  --animate-gaze-dot: gaze-dot 0.45s ease-out both;
+  --animate-gaze-path: gaze-path 0.9s ease-in-out both;
+
+  @keyframes gaze-dot {
+    from {
+      opacity: 0;
+      transform: scale(0.3);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* pathLength="1"인 경로를 처음부터 끝까지 그린다 */
+  @keyframes gaze-path {
+    from {
+      stroke-dashoffset: 1;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
   /* 모서리 */
   --radius-card: 1rem; /* 16px */
   --radius-control: 0.75rem; /* 12px, 버튼·입력칸 */

@@ -43,8 +43,19 @@
   --radius-chip: 9999px; /* 칩 */
 }
 
+/*
+ * 글꼴: 서비스 문장은 Pretendard(고딕), 시험지 지문은 명조(font-serif).
+ * --font-noto-serif-kr는 layout.tsx의 next/font가 <html>에 붙이는 변수라 inline으로 참조한다.
+ */
+@theme inline {
+  --font-sans:
+    "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
+    "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+  --font-serif: var(--font-noto-serif-kr), "Nanum Myeongjo", serif;
+}
+
 body {
   background-color: var(--color-bg);
   color: var(--color-ink);
-  font-family: Arial, Helvetica, sans-serif; /* C2에서 Pretendard로 교체 */
+  font-family: var(--font-sans);
 }

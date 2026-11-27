@@ -286,7 +286,7 @@ src/
     ```
     신청 기간 안(2026-11-20 ~ 2027-01-04)이면 `201`, 같은 이메일로 다시 보내면 `409 ALREADY_APPLIED`
 
-- [ ] **B8. 테스트 [Claude]**
+- [x] **B8. 테스트 [Claude]**
   - 수정 대상: `tests/api/applications.test.ts`, `tests/lib/rate-limit.test.ts`
   - 방식: 서버를 띄우지 않고 핸들러 팩토리에 테스트용 의존성을 넣어 `Request`를 직접 전달. 테스트마다 새 저장소, 고정 시각 **2026-12-10 12:00 KST**, 순차 ID. 상태·`error.code`·`fields` 키·저장 건수를 확인
   - **반드시 포함할 케이스** (테스트 이름은 한국어)
@@ -320,12 +320,12 @@ src/
 
   - 완료 기준: `npm run test` 전부 통과, 위 표와 대조한 목록 보고
 
-- [ ] **B9. CI 워크플로 [Claude]**
+- [x] **B9. CI 워크플로 [Claude]**
   - 수정 대상: `.github/workflows/ci.yml`
   - 내용: `main` push에서 실행, 같은 ref 이전 실행 취소, job 이름 **`ci`**, Ubuntu·Node 22·npm 캐시·10분 제한, `npm ci` → lint → typecheck → test → build. 액션 메이저 버전은 공식 저장소에서 확인
   - 완료 기준: 파일 생성
 
-- [ ] **B10. CI 조건으로 전체 검증 [Claude]**
+- [x] **B10. CI 조건으로 전체 검증 [Claude]**
   ```bash
   npm run verify
   ```
@@ -421,3 +421,4 @@ src/
 - 2026-11-26 | 브랜치 없이 `main` 하나로 작업 (PR·Preview 없음) | 사용자 결정, 1인 작업
 - 2026-11-26 | 신청 시작을 2026-12-01에서 2026-11-20 00:00 KST(수능 다음 날)로 | 수능 직후 시의성, 개발·심사 시점부터 신청 가능
 - 2026-11-27 | 상태관리는 지역 상태만, 전역 라이브러리 미사용. 폼 로직은 `useApplicationForm` 훅으로 분리 | 페이지 안에 공유할 상태가 없음, 폼 로직과 화면을 나눠 읽고 설명하기 쉽게
+- 2026-11-27 | CI 워크플로(B9)를 테스트(B8)와 같은 커밋 묶음으로 먼저 추가, 액션은 `actions/checkout@v7`·`actions/setup-node@v7` | 테스트가 생기기 전에 CI를 켜면 test 단계가 항상 실패하므로 함께 푸시해 첫 실행부터 통과

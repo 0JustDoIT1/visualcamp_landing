@@ -360,7 +360,7 @@ src/
 
 - [x] **D1. Header [Claude]** — 고정, 로고 텍스트 + CTA(이벤트 섹션으로 스크롤), 스크롤 시 배경·경계선 전환
 - [x] **D2. Hero + 시선 경로 [Claude]** — 데스크톱 2열(카피 / 지문 목업), 모바일 세로. `src/components/gaze/GazePath.tsx`: 지문 위에 멈춘 지점(점)과 되돌아간 경로(곡선)를 SVG로 1회 그림. reduced-motion이면 완성 상태로 표시. 보조 링크는 Play 스토어 앱 페이지
-- [ ] **D3. Problem [Claude]** — 문제 제기 카피 + 되돌아감 표시가 있는 짧은 지문 예시
+- [x] **D3. Problem [Claude]** — 문제 제기 카피 + 되돌아감 표시가 있는 짧은 지문 예시
 - [ ] **D4. How [Claude]** — 3단계(데스크톱 3열 / 모바일 세로), 2단계 아래 카메라 안내 한 줄
 - [ ] **D5. Features [Claude]** — 카드 3개, 다시 물 주기는 3·14·35일 간격을 시각적으로
 - [ ] **D6. FAQ [Claude]** — 아코디언 4개, 키보드로 열고 닫기 가능 (`details`/`summary` 같은 내장 요소 우선)

@@ -1,11 +1,11 @@
 import { Header } from "@/components/sections/Header";
 import { Hero } from "@/components/sections/Hero";
+import { Problem } from "@/components/sections/Problem";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 /** Phase D·E에서 채울 섹션 자리. id는 헤더 CTA·앵커 이동에 쓴다. */
 const SECTIONS = [
-  { id: "problem", label: "Problem", step: "D3" },
   { id: "how", label: "How", step: "D4" },
   { id: "features", label: "Features", step: "D5" },
   { id: "event", label: "Event", step: "E1·E2" },
@@ -19,6 +19,7 @@ export default function Home() {
 
       <main className="flex-1">
         <Hero />
+        <Problem />
 
         {SECTIONS.map(({ id, label, step }) => (
           <section

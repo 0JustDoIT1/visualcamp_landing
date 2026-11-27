@@ -259,7 +259,7 @@ src/
   - 내용: 2장 요청 표대로. 학년·유형은 상수 배열로 export(폼 재사용). 이메일은 정규화 후 형식 검사(`" A@b.com "` 통과). 필드 오류를 `{ 필드: 첫 메시지 }`로 바꾸는 함수 포함
   - 완료 기준: `npm run typecheck`
 
-- [ ] **B4. 저장소 [Claude]**
+- [x] **B4. 저장소 [Claude]**
   - 수정 대상: `src/lib/applications/repository.ts`, `memory-repository.ts`
   - 내용: `save(application)` → 성공 또는 `DUPLICATE`, `count(eventId)`. `Application`은 입력에서 `website`를 뺀 것 + `id`, `eventId`, `createdAt`
   - 완료 기준: `npm run typecheck`

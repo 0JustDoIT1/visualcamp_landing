@@ -75,6 +75,7 @@
 | 검증 | zod 4 (클라이언트 폼과 서버가 같은 스키마 공유) |
 | 테스트 | Vitest 5 |
 | 저장소 | DB 없음. 인메모리 저장소 (인터페이스로 분리) |
+| 상태관리 | 컴포넌트 지역 상태만. 전역 상태 라이브러리(zustand 등)·서버 상태 캐시는 쓰지 않음 (공유할 상태가 없음) |
 | CI | GitHub Actions: lint → typecheck → test → build |
 | 배포 | Vercel Git 연동. CI를 Deployment Check로 걸어 통과한 빌드만 프로덕션 반영 |
 | 브랜치 | `main` 하나. 작업 브랜치·PR 없이 커밋 후 `main`에 푸시. 푸시 전 `npm run verify`로 로컬 검증 |
@@ -269,7 +270,7 @@ src/
   - 내용: `repository`, `now`, `generateId`를 주입받아 `apply(event, input)`. 기간 → 동의 → 저장. 결과는 성공 또는 `EVENT_CLOSED` / `CONSENT_REQUIRED` / `ALREADY_APPLIED`
   - 완료 기준: `npm run typecheck`
 
-- [ ] **B6. 오류 응답 + rate limit [Claude]**
+- [x] **B6. 오류 응답 + rate limit [Claude]**
   - 수정 대상: `src/lib/http/errors.ts`, `rate-limit.ts`
   - 내용: 2장 오류 표를 한 곳에 정의하고 응답 생성 함수(헤더 전달 가능). rate limiter는 고정 윈도우, 키별 카운트, 윈도우가 지나면 초기화, 남은 시간을 올림한 초 반환. 테스트를 위해 시계를 주입할 수 있게
   - 완료 기준: `npm run typecheck`
@@ -374,6 +375,7 @@ src/
 - [ ] **E2. 신청 폼 [Claude]**
   - 수정 대상: `src/components/form/*`, Event 섹션
   - 내용:
+    - 폼 로직(입력값·검증·제출·응답 처리·상태 전환)은 `useApplicationForm` 훅으로 분리하고, 컴포넌트는 그리기만 한다
     - B3 스키마를 그대로 써서 클라이언트 검증 (제출 시 전체, 이후 필드 변경 시 해당 필드)
     - 서버 응답의 `fields`를 필드별로 표시, 상단 요약은 `aria-live`
     - `CONSENT_REQUIRED`, `ALREADY_APPLIED`, `EVENT_CLOSED`, `RATE_LIMITED`, 네트워크 오류마다 안내 문구
@@ -418,3 +420,4 @@ src/
 - 2026-11-26 | create-next-app `@16`·의존성 `-E` 고정, `/step` [직접] 판정을 브랜치 확인보다 먼저, Phase E 이후 브랜치 명시, CLAUDE.md에 `@AGENTS.md` | 버전 일치, Phase A에서 `/step` 오작동 방지, 문서 빈칸 해소
 - 2026-11-26 | 브랜치 없이 `main` 하나로 작업 (PR·Preview 없음) | 사용자 결정, 1인 작업
 - 2026-11-26 | 신청 시작을 2026-12-01에서 2026-11-20 00:00 KST(수능 다음 날)로 | 수능 직후 시의성, 개발·심사 시점부터 신청 가능
+- 2026-11-27 | 상태관리는 지역 상태만, 전역 라이브러리 미사용. 폼 로직은 `useApplicationForm` 훅으로 분리 | 페이지 안에 공유할 상태가 없음, 폼 로직과 화면을 나눠 읽고 설명하기 쉽게
